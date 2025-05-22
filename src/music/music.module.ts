@@ -1,3 +1,4 @@
+//Resolve error here when compliling
 import { Module } from "@nestjs/common";
 import { MusicController } from "./music.controller";
 import { MusicService } from "./music.service";
@@ -10,4 +11,4 @@ import { MusicSchema } from "./music.model";
     providers: [MusicService]
 })
 
-export class ProductsModule{}
+export class MusicModule{}

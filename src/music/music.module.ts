@@ -6,7 +6,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { MusicSchema } from "./music.model";
 
 @Module({
-    imports: [MongooseModule.forFeature([{name: 'Product', schema: MusicSchema}])],
+    imports: [MongooseModule.forFeature([{name: 'Music', schema: MusicSchema}])],
     controllers: [MusicController],
     providers: [MusicService]
 })

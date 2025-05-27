@@ -9,7 +9,7 @@ import { MusicModule } from './music/music.module';
 
 
 @Module({
-  imports: [MusicModule, MongooseModule.forRoot('mongodb+srv://user:password@productscluster.aeogqce.mongodb.net/')],
+  imports: [MusicModule, MongooseModule.forRoot('mongodb+srv://HTXue:TeddyChoe@productscluster.aeogqce.mongodb.net/')],
   controllers: [AppController],
   providers: [AppService],
 })

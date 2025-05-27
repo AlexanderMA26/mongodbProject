@@ -8,9 +8,10 @@ export class MusicController{
         async addProduct(
         @Body('title') songTitle: string, 
         @Body('artist') songArtist: string, 
-        @Body('releaseDate') songRD: number) {
+        @Body('album') songAlbum: string
+        ) {
             
-            const generatedID = await this.musicService.insertSong(songTitle, songArtist, songRD);
+            const generatedID = await this.musicService.insertSong(songTitle, songArtist, songAlbum);
             return {id: generatedID};
         }
 
@@ -33,8 +34,8 @@ export class MusicController{
     }
 
     @Patch(':id')
-    async updateProduct(@Param('id') songID: string, @Body ('title') songTitle: string, @Body ('artist') songArtist: string, @Body ('releaseDate') songReleaseDate: number){
-       await this.musicService.updateProduct(songID, songTitle, songArtist, songReleaseDate);
+    async updateProduct(@Param('id') songID: string, @Body ('title') songTitle: string, @Body ('artist') songArtist: string, @Body ('album') songAlbum: string){
+       await this.musicService.updateProduct(songID, songTitle, songArtist, songAlbum);
         return null;
     }
 

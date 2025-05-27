@@ -7,9 +7,9 @@ import { Model } from "mongoose";
 export class MusicService{
     constructor(@InjectModel('Music') private readonly musicModel: Model<Song>) {}
 
-    async insertSong(title: string, artist: string, releaseDate: number) {
+    async insertSong(title: string, artist: string, album: string,) {
         //const prodID = Math.random().toString();
-        const newProduct = new this.musicModel({title, artist: artist, releaseDate});
+        const newProduct = new this.musicModel({title, artist: artist, album});
         const result = await newProduct.save();
         console.log(result);
         return result.id as string;
@@ -18,13 +18,13 @@ export class MusicService{
     async getSongs(){
         const songs = await this.musicModel.find().exec();
         
-        return songs.map((song) => ({id: song.id, title: song.title, artist: song.artist, release: song.releaseDate}));
+        return songs.map((song) => ({id: song.id, title: song.title, artist: song.artist, album: song.album}));
     }
 
     async getSingleSong(songID: string){
         const song = await this.findProduct(songID);
 
-        return {id: song.id, title: song.title, artist: song.artist, releaseDate: song.releaseDate};
+        return {id: song.id, title: song.title, artist: song.artist, album: song.album};
     }
 
     async deleteProduct(songID: string){
@@ -32,7 +32,7 @@ export class MusicService{
             console.log(result);
         }
 
-        async updateProduct(songID: string, title: string, artist: string, releaseDate: number){
+        async updateProduct(songID: string, title: string, artist: string, album: string){
         const updateProduct = await this.findProduct(songID);
     
         if (title){
@@ -41,9 +41,10 @@ export class MusicService{
         if (artist){
             updateProduct.artist = artist;
         }
-        if (releaseDate){
-            updateProduct.releaseDate = releaseDate;
+        if (album){
+            updateProduct.album = album;
         }
+        
         updateProduct.save();
     }
 

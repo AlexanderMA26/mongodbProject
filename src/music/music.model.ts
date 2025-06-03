@@ -12,5 +12,4 @@ export interface Song extends mongoose.Document{
     artist: string;
     album: string
     
-    
     };

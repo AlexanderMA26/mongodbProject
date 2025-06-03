@@ -7,13 +7,15 @@ import { Model } from "mongoose";
 export class MusicService{
     constructor(@InjectModel('Music') private readonly musicModel: Model<Song>) {}
 
-    async insertSong(title: string, artist: string, album: string,) {
+    async insertSong(title: string, artist: string, album: string) {
         //const prodID = Math.random().toString();
         const newProduct = new this.musicModel({title, artist: artist, album});
         const result = await newProduct.save();
         console.log(result);
         return result.id as string;
     }
+    
+    
 
     async getSongs(){
         const songs = await this.musicModel.find().exec();
